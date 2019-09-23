@@ -1,0 +1,12 @@
+[app/install/install_source_checksum]
+version = 7.2.6
+modtime = 1561358148.134364000
+
+[passwords/credential%3A%3Awhoisxmlapi_api_key%3A]
+owner = admin
+version = 7.2.6
+modtime = 1568720460.074155000
+
+[app/install/is_configured]
+version = 7.2.6
+modtime = 1568720460.078758000
