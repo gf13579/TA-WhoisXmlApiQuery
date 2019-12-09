@@ -35,30 +35,16 @@ class whoisxmlapiCommand(StreamingCommand):
 
         api_key = retrievedCredential.content.get('clear_password')
 
-        # build a unique list of domains
+        #yield({"api key":api_key})
+        #return
+        #api_key = "at_wl9FLGub0XShvCEzJgajDpPV9JyeI"
 
-        domains = {}
-        
         record_list = list(records)
         for r in record_list:
-            domains[r['domain']] = 1
-
-        results = wxa.get_whois_info(api_key, domains.keys())
-
-        # do query using the wxa module (which will handle paging, waiting, looping)
-        # iterate through each record, adding the required fields
-
-        # FAKE DATA
-        #results = {'google.com':'Alphabet', 'yahoo.com': 'Someone'}
-
-        for r in record_list:
-            domain = r['domain']
-            if domain in results:
-                #r["owner"] = str(results[domain])
-                for k in results[domain]:
-                    r[k] = results[domain][k]
-            else:
-                r['owner'] = "Unknown"
+            result = wxa.submit_query_single(api_key, r['domain'])
+            r.update(result)
             yield r
+
+        return
 
 dispatch(whoisxmlapiCommand, sys.argv, sys.stdin, sys.stdout, __name__)
