@@ -10,7 +10,6 @@ from splunklib.searchcommands import validators
 
 import urllib, urllib2
 import json
-#import itertools
 
 import wxa
 
@@ -35,14 +34,18 @@ class whoisxmlapiCommand(StreamingCommand):
 
         api_key = retrievedCredential.content.get('clear_password')
 
-        #yield({"api key":api_key})
-        #return
-        #api_key = "at_wl9FLGub0XShvCEzJgajDpPV9JyeI"
+        result_cache = {}
 
         record_list = list(records)
         for r in record_list:
-            result = wxa.submit_query_single(api_key, r['domain'])
-            r.update(result)
+            if r['domain'] in result_cache:
+                existing_record = result_cache[r['domain']]
+                r.update(existing_record)
+            else:
+                self.logger.info('Querying: %s', r['domain'])
+                result = wxa.submit_query_single(api_key, r['domain'])
+                r.update(result)
+                result_cache[r['domain']] = result
             yield r
 
         return
