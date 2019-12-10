@@ -1,13 +1,13 @@
 ## TA-WhoIsXmlAPI ##
 
        Original Author: Greg Ford
-       Version/Date: 1.0.0 / 17 Sep 2019
+       Version/Date: 1.0.2 / 10 Dec 2019
 
 ## Update History ##
 ----------------------------
-       1.1.0 10 Dec 2019
+       1.2.0 10 Dec 2019
        --------
-       Refactored code.
+       Refactored code. Removed API key from test.py.
 
        1.0.0 17 Sep 2019
        --------
