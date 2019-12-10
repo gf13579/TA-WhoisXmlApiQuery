@@ -36,8 +36,8 @@ class whoisxmlapiCommand(StreamingCommand):
 
         result_cache = {}
 
-        record_list = list(records)
-        for r in record_list:
+        #record_list = list(records)
+        for r in records:
             if r['domain'] in result_cache:
                 existing_record = result_cache[r['domain']]
                 r.update(existing_record)
