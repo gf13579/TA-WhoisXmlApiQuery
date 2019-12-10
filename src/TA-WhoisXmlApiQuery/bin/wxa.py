@@ -25,15 +25,41 @@ def submit_query_single(api_key, domain):
     new_rec = {}
     try:
         new_rec['domainName'] = domain
+    except:
+        new_rec['domainName'] = ''
+    try:
         new_rec['contactEmail'] = rec.get('WhoisRecord').get('contactEmail')
+    except:
+        new_rec['contactEmail'] = ''
+    try:
         new_rec['registrarName'] = rec.get('WhoisRecord').get('registrarName')
+    except:
+        new_rec['registrarName'] = ''
+    try:
         new_rec['organization'] = rec.get('WhoisRecord').get('registryData').get('registrant').get('organization')
+    except:
+        new_rec['organization'] = ''
+    try:
+        new_rec['organization'] = rec.get('WhoisRecord').get('registrant').get('organization')
+    except:
+        if new_rec['organization'] == '':
+            new_rec['organization'] = ''
+    try:
         new_rec['registrantName'] = rec.get('WhoisRecord').get('registryData').get('registrant').get('name')
+    except:
+        new_rec['registrantName'] = ''
+    try:
         new_rec['techContactName'] = rec.get('WhoisRecord').get('registryData').get('technicalContact').get('name')
+    except:
+        new_rec['techContactName'] = ''
+    try:
         new_rec['street1'] = rec.get('WhoisRecord').get('registryData').get('registrant').get('street1')
+    except:
+        new_rec['street1'] = ''
+    try:
         new_rec['postalCode'] = rec.get('WhoisRecord').get('registryData').get('registrant').get('postalCode')
     except:
-        pass
+        new_rec['postalCode'] = ''
 
     return new_rec
 
