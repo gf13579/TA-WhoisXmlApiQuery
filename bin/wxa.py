@@ -3,7 +3,6 @@ import sys
 import time
 import datetime
 import requests
-from urllib2 import urlopen
 import json
 import logging
 import time
