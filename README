@@ -1,0 +1,30 @@
+## TA-WhoIsXmlAPI ##
+
+       Original Author: Greg Ford
+       Version/Date: 1.5.0 / 12 Dec 2019
+
+## Update History ##
+----------------------------
+       1.5.0 12 Dec 2019
+       --------
+       Really removed API key from test.py.
+
+       1.4.0 10 Dec 2019
+       --------
+       Refactored code. Removed API key from test.py.
+
+       1.0.0 17 Sep 2019
+       --------
+       First release.
+
+A custom command that adds whois data from WhoisXMLAPI.
+
+How it works:
+This Splunk App provides a custom command that takes the domain from one or more events and uses the WhoisXMLAPI API to populate whois information for each domain.
+
+Before first use, configure the API key using the app's setup page.
+
+Simply define which splunk field is your domain from the extracted data, and call it domain and then pass that to the whoisxmlapi command
+
+| eval domain=source_dom | whoisxmlapi
+
