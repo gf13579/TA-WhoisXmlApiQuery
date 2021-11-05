@@ -11,7 +11,7 @@ import sys
 
 def test():
     api_key = input("Enter your API key:")
-    domains = ["splunk.com","180.189.154.30","intalock.com.au","148.163.148.88"]
+    domains = ["splunk.com","intalock.com.au"]
     #for d in domains:
     #    result = wxa.submit_query_single(api_key, d)
     #    print(result)
