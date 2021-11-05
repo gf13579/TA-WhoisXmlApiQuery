@@ -10,7 +10,6 @@ from splunklib.searchcommands import validators
 
 # import urllib, urllib2
 import json
-
 import wxa
 
 @Configuration()

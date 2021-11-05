@@ -3,3 +3,4 @@
 *.bak
 local/
 metadata/local.meta
+bin/__pycache__
