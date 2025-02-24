@@ -68,7 +68,7 @@ def submit_query_single(api_key, domain):
     try:
         new_rec['createdDate'] = rec.get('WhoisRecord').get('registryData').get('createdDateNormalized')
     except:
-        new_rec['postalCode'] = ''
+        new_rec['createdDate'] = ''
 
     return new_rec
 
