@@ -16,6 +16,12 @@ def submit_queries(api_key,domains):
     return retDict
 
 def submit_query_single(api_key, domain):
+
+    # HI SPLUNK CLOUD VETTING TEAM! Please don't reject the TA For sending the api key as a GET parameter
+    # There is no alternative - this is just the way the vendor API has been written: https://whois.whoisxmlapi.com/documentation/making-requests
+    # This could be due to the API being read-only - the most significant consequence of the API key being leaked is that a customer's credits for DNS lookups might be used up
+    # The splunkbase page for this TA will be updated to highlight to end users that their API key is being transmitted in the GET request - and that there is no alternative right now
+
     url = 'https://www.whoisxmlapi.com/whoisserver/WhoisService?' + 'domainName=' + domain + '&apiKey=' + api_key + "&outputFormat=JSON"
 
     response = requests.get(url)

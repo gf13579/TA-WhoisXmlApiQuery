@@ -5,11 +5,6 @@ import sys
 from splunklib.searchcommands import Configuration
 from splunklib.searchcommands import dispatch
 from splunklib.searchcommands import StreamingCommand
-from splunklib.searchcommands import Option
-from splunklib.searchcommands import validators
-
-import urllib, urllib2
-import json
 
 import wxa
 
@@ -17,7 +12,7 @@ import wxa
 class whoisxmlapiCommand(StreamingCommand):
 
     def stream(self, records):
-        self.logger.debug('CountMatchesCommand: %s', self)  # logs command line
+        self.logger.debug('whoisxmlapiCommand: %s', self)  # logs command line
 
         storage_passwords=self.service.storage_passwords
 
@@ -25,7 +20,7 @@ class whoisxmlapiCommand(StreamingCommand):
         try:
             retrievedCredential = [k for k in storage_passwords if k.content.get('username')=='whoisxmlapi_api_key'][0]
 
-        except Exception, e:
+        except Exception as e:
             error = "error retrieving API key - is it defined?: %s " % ( e )
             for record in records:
                 record["error"] = error
@@ -36,7 +31,6 @@ class whoisxmlapiCommand(StreamingCommand):
 
         result_cache = {}
 
-        #record_list = list(records)
         for r in records:
             if r['domain'] in result_cache:
                 existing_record = result_cache[r['domain']]

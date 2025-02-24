@@ -1,10 +1,22 @@
 ## TA-WhoisXmlApiQuery ##
 
        Original Author: Greg Ford
-       Version/Date: 1.5.0 / 12 Dec 2019
+       Version/Date: 1.7.0 / 25 Feb 2025
 
 ## Update History ##
 ----------------------------
+       1.7,0 25 Feb 2025
+       --------
+       Refreshing splunklib and other app vetting requirements
+
+       1.6.1 12 Nov 2021
+       --------
+       Addessing Splunk Cloud Vetting Team concerns
+
+       1.6.0 5 Nov 2021
+       --------
+       Updating for Python 3
+
        1.5.0 12 Dec 2019
        --------
        Really removed API key from test.py.
@@ -19,7 +31,8 @@
 
 A custom command that adds whois data from WhoisXMLAPI.
 
-How it works:
+## 
+How it works
 This Splunk App provides a custom command that takes the domain from one or more events and uses the WhoisXMLAPI API to populate whois information for each domain.
 
 Before first use, configure the API key using the app's setup page.
