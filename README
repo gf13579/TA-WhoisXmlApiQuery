@@ -1,10 +1,14 @@
 ## TA-WhoisXmlApiQuery ##
 
        Original Author: Greg Ford
-       Version/Date: 1.7.0 / 25 Feb 2025
+       Version/Date: 1.7.1 / 25 Mar 2025
 
 ## Update History ##
 ----------------------------
+       1.7.1 25 Mar 2025
+       --------
+       Re-adding default/data/ui content
+
        1.7.0 25 Feb 2025
        --------
        Refreshing splunklib and other app vetting requirements
