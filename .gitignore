@@ -3,6 +3,7 @@
 local/
 metadata/local.meta
 *.tgz
+*.html
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
