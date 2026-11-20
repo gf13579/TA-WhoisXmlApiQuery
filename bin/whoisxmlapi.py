@@ -2,6 +2,9 @@
 
 import sys
 
+if sys.version_info < (3, 13):
+    sys.exit("The whoisxmlapi command requires Python 3.13 or newer.")
+
 from splunklib.searchcommands import Configuration
 from splunklib.searchcommands import dispatch
 from splunklib.searchcommands import StreamingCommand

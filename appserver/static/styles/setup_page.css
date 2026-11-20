@@ -1,0 +1,29 @@
+#main_container {
+    padding: 10px;
+}
+
+#main_container #password_input {
+    margin-left: 20px;
+}
+
+#main_container #setup_button {
+    margin-top: 15px;
+}
+
+#main_container .success {
+    margin-top: 15px;
+    color: green;
+    display: none;
+}
+
+#main_container .error {
+    margin-top: 15px;
+    color: darkred;
+    display: none;
+}
+
+#main_container #error_details {
+    margin-top: 15px;
+    display: none;
+    white-space: pre-wrap;
+}

@@ -1,10 +1,16 @@
 ## TA-WhoisXmlApiQuery ##
 
        Original Author: Greg Ford
-       Version/Date: 1.7.1 / 25 Mar 2025
+       Version/Date: 1.8.0 / 20 Nov 2026
 
 ## Update History ##
 ----------------------------
+       1.8.0 20 Nov 2026
+       --------
+       Restored appserver content (setup page CSS/JS)
+       Fixed setup page so the app is marked as configured after saving the API key
+       Updated splunklib to Splunk SDK for Python 3.0.1; now requires Python 3.13+
+
        1.7.1 25 Mar 2025
        --------
        Re-adding default/data/ui content
@@ -35,13 +41,30 @@
 
 A custom command that adds whois data from WhoisXMLAPI.
 
+## Requirements ##
+
+Splunk Enterprise or Splunk Cloud Platform 10.2 or later with Python 3.13 or
+3.14 is required. The app includes Splunk SDK for Python 3.0.1. Earlier Splunk
+releases do not support the python.required setting and are unsupported.
+
 ## 
 How it works
 This Splunk App provides a custom command that takes the domain from one or more events and uses the WhoisXMLAPI API to populate whois information for each domain.
 
 Before first use, configure the API key using the app's setup page.
+The setup page stores the key in Splunk's encrypted credential storage and
+redirects only after saving the key, marking the app configured, and reloading
+the app. If setup fails, an error is displayed so you can retry.
+The configured flag is set through the app's `apps/local` endpoint, which writes
+`[install] is_configured = 1` to its own `local/app.conf` rather than updating an
+inherited configuration stanza from another app.
 
 Simply define which splunk field is your domain from the extracted data, and call it domain and then pass that to the whoisxmlapi command
 
 | eval domain=source_dom | whoisxmlapi
 
+## Packaging ##
+
+Run `./package.sh` from the repository root to create a `.tgz` package.
+The package excludes `.env`, `.venv`, `.DS_Store` files and the top-level `tests/` folder.
+It includes the setup JavaScript and CSS from `appserver/static/`.

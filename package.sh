@@ -15,10 +15,14 @@ COPYFILE_DISABLE=1 tar czf "${APP_DIR}.tgz" -C ../ \
     --exclude '*/__pycache__/*' \
     --exclude '.git*' \
     --exclude '.vscode*' \
+    --exclude '.env' \
+    --exclude '.venv' \
+    --exclude '.DS_Store' \
     --exclude '*.tgz' \
     --exclude '*.sh' \
     --exclude 'local' \
     --exclude 'metadata/local.meta' \
+    --exclude "${APP_DIR}/tests" \
     "${APP_DIR}"
 
 echo "Done!"
